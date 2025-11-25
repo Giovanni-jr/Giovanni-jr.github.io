@@ -10,7 +10,8 @@
 /* Estilos Generales */
 body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
+    /* CAMBIO CLAVE: Usamos 100svh para mejor compatibilidad PWA en móviles */
+    min-height: 100svh; 
     margin: 0;
     overflow-x: hidden;
     transition: background-color 0.5s;
@@ -23,7 +24,11 @@ body {
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #0f0a21, #000000);
-    min-height: 100vh;
+    /* Ajuste para usar la altura moderna */
+    min-height: 100svh; 
+    width: 100%; /* Aseguramos que ocupe todo el ancho */
+    box-sizing: border-box; /* Previene desbordamiento de padding */
+    padding: 20px; /* Un poco de padding en caso de pantallas muy pequeñas */
 }
 
 #login-screen {
@@ -67,7 +72,8 @@ body {
     border-radius: 15px;
     padding: 40px;
     width: 350px;
-    max-width: 90%; /* Asegura que se adapte a celulares */
+    max-width: 100%; /* Asegura que el ancho máximo use 100% del contenedor */
+    box-sizing: border-box; /* Importante para que el padding no desborde el ancho */
     text-align: center;
     position: relative;
     color: var(--text-light);
@@ -205,3 +211,4 @@ body {
     background-color: #7c3aed;
     color: #fff;
 }
+/* Se eliminó la llave de cierre adicional que estaba al final del archivo original */
