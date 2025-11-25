@@ -1,0 +1,207 @@
+/* Variables y Estilos Base (Login) */
+:root {
+    --dark-bg: #100f1c;
+    --neon-blue: #00e0ff;
+    --neon-cyan: #cc00ff;
+    --text-light: #e0e0e0;
+    --card-bg: rgba(255, 255, 255, 0.08);
+}
+
+/* Estilos Generales */
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    transition: background-color 0.5s;
+}
+
+/* Estilos de Login */
+.login-body {
+    /* ESTO CENTRA LA PÁGINA EN MÓVILES Y ESCRITORIOS */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0a21, #000000);
+    min-height: 100vh;
+}
+
+#login-screen {
+    z-index: 1000;
+}
+
+.neon-background-effect {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 150px;
+    background-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(153, 0, 255, 0.1) 20%,
+        rgba(208, 0, 255, 0.316) 50%,
+        rgba(149, 0, 255, 0.488) 80%,
+        transparent 100%
+    );
+    filter: blur(3px);
+    animation: wave-line-move 10s linear infinite,
+               wave-form 5s infinite alternate ease-in-out;
+}
+
+@keyframes wave-line-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes wave-form {
+    0% { clip-path: polygon(0 80%, 33% 40%, 66% 60%, 100% 20%, 100% 100%, 0 100%); }
+    100% { clip-path: polygon(0 20%, 33% 60%, 66% 40%, 100% 80%, 100% 100%, 0 100%); }
+}
+
+.login-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    width: 350px;
+    max-width: 90%; /* Asegura que se adapte a celulares */
+    text-align: center;
+    position: relative;
+    color: var(--text-light);
+}
+
+.login-card::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 17px;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-cyan), var(--neon-blue));
+    filter: blur(4px);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.login-card:hover::before {
+    opacity: 0.8;
+}
+
+.login-card h2 {
+    margin-bottom: 30px;
+    color: var(--neon-blue);
+}
+
+.input-glow-group {
+    position: relative;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.input-glow-group input {
+    width: 100%;
+    padding: 15px 10px 5px 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    font-size: 17px;
+    transition: all 0.4s ease;
+    outline: none;
+}
+
+.input-glow-group input:focus,
+.input-glow-group input:valid {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 5px var(--neon-blue), 0 0 3px var(--neon-cyan) inset;
+    background: rgba(0, 224, 255, 0.03);
+}
+
+.input-glow-group label {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.input-glow-group input:focus ~ label,
+.input-glow-group input:valid ~ label {
+    top: -5px;
+    left: 5px;
+    font-size: 11px;
+    padding: 0 5px;
+    color: var(--neon-cyan);
+    background-color: var(--dark-bg);
+    border-radius: 3px;
+}
+
+.neon-button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-cyan));
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--dark-bg);
+    margin-top: 20px;
+    transition: all 0.3s;
+}
+
+.neon-button:hover {
+    background: linear-gradient(45deg, var(--neon-cyan), var(--neon-blue));
+    transform: translateY(-2px);
+}
+
+.neon-button:active {
+    transform: translateY(0);
+}
+
+/* Estilos de Dashboard */
+.dashboard-body {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.text-gradient {
+    background-image: linear-gradient(to right, #6b21a8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dashboard-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(107, 33, 168, 0.2);
+}
+
+.nav-link {
+    color: #6b7280;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 150ms;
+}
+
+.nav-link:hover {
+    color: #7c3aed;
+}
+
+.nav-link.active {
+    background-color: #7c3aed;
+    color: #fff;
+}
